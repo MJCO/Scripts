@@ -1,3 +1,16 @@
+<#
+    .SYNOPSIS
+        Microsoft Endpoint Manager MDM Enrolment
+    .DESCRIPTION
+        This script creates a scheduled task to handle Endpoint Manager (formerly Intune) MDM Enrolment.
+        The scheduled task runs as the SYSTEM user so this script should be run as an administrator or as SYSTEM.
+    .NOTES
+        +------------------------------------------------+
+        |   UPDATED     : 2020.10.02                     |
+        |   AUTHOR      : Mikey O'Toole <mikey@mjco.uk>  |
+        |   LICENSE     : MIT                            |
+        +------------------------------------------------+
+#>
 Begin {
     $regKey = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\"
     $regKeyMDM = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\MDM"
