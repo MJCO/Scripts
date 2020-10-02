@@ -11,6 +11,8 @@
         |   LICENSE     : MIT                            |
         +------------------------------------------------+
 #>
+
+
 Begin {
     $regKey = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\"
     $regKeyMDM = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\MDM"
@@ -23,7 +25,7 @@ Begin {
     $trigger = New-ScheduledTaskTrigger -Once -At $startAt -RepetitionInterval $repeat -RepetitionDuration $duration
     $timeToComplete = (New-TimeSpan -Hours 1)
     $settings = New-ScheduledTaskSettingsSet -MultipleInstances Queue -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -RunOnlyIfNetworkAvailable -ExecutionTimeLimit $timeToComplete -Priority 7    
-    $principal = New-ScheduledTaskPrincipal -UserID 'S-1-5-18' -RunLevel LeastPrivilege
+    $principal = New-ScheduledTaskPrincipal -UserID 'S-1-5-18' -RunLevel Limited
 }
 Process {     
     New-Item -Path $regKey -Name MDM
